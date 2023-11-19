@@ -1,0 +1,31 @@
+etc/docker/db/data
+phpunit.xml
+.idea
+
+tmp/installed_wordpress
+
+/composer.json
+/composer.lock
+
+# Application
+web/app/plugins/*
+!web/app/plugins/.gitkeep
+web/app/mu-plugins/*/
+web/app/upgrade
+web/app/uploads/*
+!web/app/uploads/.gitkeep
+
+# WordPress
+web/wp
+web/.htaccess
+web/app/languages
+web/app/themes
+
+# Dotenv
+.env
+
+# Composer
+/vendor
+
+# WP-CLI
+wp-cli.local.yml

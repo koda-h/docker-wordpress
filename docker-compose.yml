@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  web:
+    container_name: ecs-wordpress-${SITE}-web
+    build:
+      context: .
+      dockerfile: etc/docker/web/Dockerfile
+      args:
+        APP_ENV: ${APP_ENV}
+        WEB_PORT: ${WEB_PORT}
+    ports:
+      - ${WEB_PORT:-8831}:80
+    env_file: .env
+    links:
+      - app
+    volumes:
+      - .:/var/www/html
+
+    networks:
+      - default
+  app:
+    container_name: ecs-wordpress-${SITE}-app
+    build:
+      context: .
+      dockerfile: etc/docker/app/Dockerfile
+      args:
+        APP_ENV: ${APP_ENV}
+        SITE: ${SITE}
+        WORDPRESS_VERSION: ${WORDPRESS_VERSION:-*}
+    links:
+      - db
+    volumes:
+      - .:/var/www/html
+
+    env_file: .env
+    networks:
+      - default
+  db:
+    container_name: ecs-wordpress-${SITE}-db
+    build:
+      context: .
+      dockerfile: etc/docker/db/Dockerfile
+    volumes:
+      - ./etc/docker/db/data:/var/lib/mysql
+    ports:
+      - ${DB_PORT:-33311}:3306
+    platform: linux/amd64
+    environment:
+      TZ: "Asia/Tokyo"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
+    env_file: .env
+    networks:
+      - default
+
