@@ -6,7 +6,7 @@
 
 ARG PLATFORM_ARCH
 
-FROM --platform=$PLATFORM_ARCH php:8.3-fpm AS php-base
+FROM --platform=$PLATFORM_ARCH php:8.4-fpm AS php-base
 
 RUN --mount=type=cache,target=/var/cache/apt \
     set -eux; \
