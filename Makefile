@@ -52,3 +52,9 @@ update-theme:
 	cp -rp web/app/themes/ data/themes/
 create-env:
 	cp .env.example .env
+add-plugin:
+	docker compose run --rm app composer require wpackagist-plugin/${name}:*
+del-plugin:
+	docker compose run --rm app composer remove wpackagist-plugin/${name}
+update-plugin:
+	docker compose run --rm app composer update wpackagist-plugin/${name}
