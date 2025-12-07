@@ -1730,15 +1730,15 @@
         },
         {
             "name": "wpackagist-plugin/advanced-custom-fields",
-            "version": "6.2.3",
+            "version": "6.7.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/advanced-custom-fields/",
-                "reference": "tags/6.2.3"
+                "reference": "tags/6.7.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/advanced-custom-fields.6.2.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/advanced-custom-fields.6.7.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1748,15 +1748,15 @@
         },
         {
             "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
-            "version": "3.2.5",
+            "version": "3.2.11",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/amazon-s3-and-cloudfront/",
-                "reference": "tags/3.2.5"
+                "reference": "tags/3.2.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.3.2.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.3.2.11.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1766,15 +1766,15 @@
         },
         {
             "name": "wpackagist-plugin/classic-editor",
-            "version": "1.6.3",
+            "version": "1.6.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/classic-editor/",
-                "reference": "tags/1.6.3"
+                "reference": "tags/1.6.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/classic-editor.1.6.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/classic-editor.1.6.7.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1784,15 +1784,15 @@
         },
         {
             "name": "wpackagist-plugin/custom-post-type-ui",
-            "version": "1.15.1",
+            "version": "1.18.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/custom-post-type-ui/",
-                "reference": "tags/1.15.1"
+                "reference": "tags/1.18.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/custom-post-type-ui.1.15.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/custom-post-type-ui.1.18.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1802,15 +1802,15 @@
         },
         {
             "name": "wpackagist-plugin/imsanity",
-            "version": "2.8.3",
+            "version": "2.8.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/imsanity/",
-                "reference": "tags/2.8.3"
+                "reference": "tags/2.8.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/imsanity.2.8.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/imsanity.2.8.7.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2589,6 +2589,6 @@
     "platform": {
         "php": ">=7.1"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
