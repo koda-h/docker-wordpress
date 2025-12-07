@@ -6,7 +6,9 @@ services:
       dockerfile: etc/docker/web/Dockerfile
       args:
         APP_ENV: ${APP_ENV}
+        SITE: ${SITE}
         WEB_PORT: ${WEB_PORT}
+        PLATFORM_ARCH: linux/arm64
     ports:
       - ${WEB_PORT:-8831}:80
     env_file: .env
@@ -25,6 +27,7 @@ services:
       args:
         APP_ENV: ${APP_ENV}
         SITE: ${SITE}
+        PLATFORM_ARCH: linux/arm64
         WORDPRESS_VERSION: ${WORDPRESS_VERSION:-*}
     depends_on:
       db:
