@@ -14,7 +14,7 @@ services:
       - app
     volumes:
       - .:/var/www/html
-
+      - php-fpm-sock:/var/www/html/tmp/sockets
     networks:
       - default
   app:
@@ -30,6 +30,7 @@ services:
       - db
     volumes:
       - .:/var/www/html
+      - php-fpm-sock:/var/www/html/tmp/sockets
 
     env_file: .env
     networks:
@@ -55,3 +56,5 @@ services:
     networks:
       - default
 
+volumes:
+  php-fpm-sock:
