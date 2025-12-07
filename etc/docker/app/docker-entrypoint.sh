@@ -2,8 +2,6 @@
 
 set -eu
 
-sh /usr/local/bin/wait_db_connect.sh
-
 if [ "$APP_ENV" = "local" ] && [ -n "$FORCE_INSTALL" ]; then
     rm tmp/installed_wordpress
 fi

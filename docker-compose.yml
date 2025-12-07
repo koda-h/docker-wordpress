@@ -10,7 +10,7 @@ services:
     ports:
       - ${WEB_PORT:-8831}:80
     env_file: .env
-    links:
+    depends_on:
       - app
     volumes:
       - .:/var/www/html
@@ -26,12 +26,12 @@ services:
         APP_ENV: ${APP_ENV}
         SITE: ${SITE}
         WORDPRESS_VERSION: ${WORDPRESS_VERSION:-*}
-    links:
-      - db
+    depends_on:
+      db:
+        condition: service_healthy
     volumes:
       - .:/var/www/html
       - php-fpm-sock:/var/www/html/tmp/sockets
-
     env_file: .env
     networks:
       - default
@@ -55,6 +55,13 @@ services:
     env_file: .env
     networks:
       - default
+    healthcheck:
+      # https://devops.stackexchange.com/questions/11501/healthcheck-cmd-vs-cmd-shell
+      # https://zenn.dev/daifukuninja/articles/35c8c9812391f7
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u$DB_USER -p$DB_PASSWORD || exit 1"]
+      interval: 2s
+      timeout: 2s
+      retries: 3
 
 volumes:
   php-fpm-sock:

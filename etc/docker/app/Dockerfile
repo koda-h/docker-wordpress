@@ -16,8 +16,7 @@ ENV APP_ENV=$APP_ENV \
     DB_USER=$DB_USER \
     DB_PASSWORD=$DB_PASSWORD \
     DB_PORT=$DB_PORT \
-    WORDPRESS_VERSION=$WORDPRESS_VERSION \
-    DOCKERIZE_VERSION=v0.6.1
+    WORDPRESS_VERSION=$WORDPRESS_VERSION
 
 RUN apt-get update -y && \
     apt-get install -y libzip-dev zip libpq-dev libpcre3-dev zlib1g-dev libpng-dev libmcrypt-dev curl libcurl4-openssl-dev vim libjpeg-dev libfreetype6-dev libxml2-dev libonig-dev \
@@ -25,11 +24,6 @@ RUN apt-get update -y && \
   && docker-php-ext-configure zip --with-zip \
   && docker-php-ext-configure gd --with-freetype=/usr/include --with-jpeg=/usr/include \
   && docker-php-ext-install zip pdo pdo_mysql mysqli mbstring gd curl
-
-# Install dockerize
-RUN curl -OL https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
-    && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
 
 #  make user home directory, set user id 999 and let assign user group to www-data
 RUN useradd -m --no-user-group -g www-data -u 999 appuser
@@ -41,7 +35,6 @@ COPY ./etc/docker/app/docker-entrypoint.sh /bin/docker-entrypoint.sh
 COPY ./etc/docker/app/php-fpm.d/docker.conf /usr/local/etc/php-fpm.d/zzz-docker.conf
 COPY ./etc/docker/app/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./etc/docker/app/php.ini /usr/local/etc/php/php.ini
-COPY ./etc/docker/bin/wait_db_connect.sh /usr/local/bin/wait_db_connect.sh
 COPY ./etc/docker/bin/wordpress_install.sh /usr/local/bin/wordpress_install.sh
 COPY ./etc/docker/bin/setup_bedrock.sh /usr/local/bin/setup_bedrock.sh
 COPY ./etc/docker/bin/plugin_install.sh /usr/local/bin/plugin_install.sh
