@@ -39,6 +39,7 @@ ARG DB_NAME
 ARG DB_USER
 ARG DB_PASSWORD
 ARG DB_PORT
+ARG WORDPRESS_VERSION
 
 ENV APP_ENV=$APP_ENV \
     SITE=$SITE \
@@ -47,6 +48,7 @@ ENV APP_ENV=$APP_ENV \
     DB_USER=$DB_USER \
     DB_PASSWORD=$DB_PASSWORD \
     DB_PORT=$DB_PORT \
+    WORDPRESS_VERSION=$WORDPRESS_VERSION \
     PATH="$PATH:/composer/vendor/bin:/var/www/html/vendor/bin"
 
 # Composer 配置（最終にも置く）
